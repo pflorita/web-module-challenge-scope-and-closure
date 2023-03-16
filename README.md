@@ -61,6 +61,7 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+	- a closure in JavaScript is a function enclosed in a parent function that makes changes to the variables declared in the parent function's scope.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,9 +83,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+	- the closure in this code is 'return function()' inside the function 'personalDice' because it accessed the variable 'name' which is outside of its scope.
 
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+	- Dan will always be the one rolling the dice, but each time the function 'dansRoll' is called, the variable 'newRoll' (declared inside the anonymous function's scope) gets redeclared and reassigned a new value, thereby return a different value each time Dan rolls the dice.
+
+c. What is the lexical scope of `newRoll`? 
+	- the lexical scope of newRoll is the anonymous function's scope where it is declared.
 
 ### Task 3 - Stretch Goals
 
@@ -99,6 +104,21 @@ var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
 ```
+
+/*
+Solution:
+// 'createBase' function declaration
+function createBase(num) {
+	// a closure that accesses the variable 'num' declared outside of its scope
+	return function(num2) {
+		return num + num2;
+	}
+}
+// addSix references the anonymous function inside 'createBase' function.
+var addSix = createBase(6);
+addSix(10); // returns 16;
+*/
+
 
 2. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
 
